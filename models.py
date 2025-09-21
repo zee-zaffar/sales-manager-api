@@ -1,0 +1,31 @@
+from app import db
+
+class ShipmentHeader(db.Model):
+    __tablename__ = 'shipmentheader'
+    id = db.Column(db.Integer, primary_key=True)
+    supplier_name = db.Column(db.String(255), nullable=False)
+    shipment_no = db.Column(db.String(100), nullable=False)
+    date_received = db.Column(db.Date, nullable=False)
+    comments = db.Column(db.Text)
+    details = db.relationship('ShipmentDetail', backref='header', cascade="all, delete-orphan")
+    payments = db.relationship('Payment', backref='header', cascade="all, delete-orphan")
+
+class ShipmentDetail(db.Model):
+    __tablename__ = 'shipmentdetail'
+    id = db.Column(db.Integer, primary_key=True)
+    shipmentheaderid = db.Column(db.Integer, db.ForeignKey('shipmentheader.id'), nullable=False)
+    description = db.Column(db.Text)
+    sku = db.Column(db.String(100))
+    quantity = db.Column(db.Integer)
+    unit_price = db.Column(db.Numeric(18,2))
+    comments = db.Column(db.Text)
+
+class Payment(db.Model):
+    __tablename__ = 'payments'
+    id = db.Column(db.Integer, primary_key=True)
+    shipmentheaderid = db.Column(db.Integer, db.ForeignKey('shipmentheader.id'), nullable=False)
+    paymentdate = db.Column(db.Date, nullable=False)
+    description = db.Column(db.String(100), nullable=False)
+    amount = db.Column(db.Numeric(18,2), nullable=False)
+    fee = db.Column(db.Numeric(18,2), nullable=False)
+    comments = db.Column(db.Text)
