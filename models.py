@@ -2,16 +2,14 @@ from main import db
 
 class Orders(db.Model):
     __tablename__ = 'orders'
-    id = db.Column(db.Integer, primary_key=True)
-    orderdate = db.Column(db.Date, nullable=False)
-    orderno = db.Column(db.String(100), nullable=False)
+    order_no = db.Column(db.String(100), primary_key=True)
+    order_date = db.Column(db.Date, nullable=False)
     qty = db.Column(db.Integer, nullable=False)
-    category = db.Column(db.String(100))
     color = db.Column(db.String(100))
     source = db.Column(db.String(100))
     platform = db.Column(db.String(100))
-    orderamount = db.Column(db.Numeric(18,2))
-    salestax = db.Column(db.Numeric(18,2))
+    order_amount = db.Column(db.Numeric(18,2))
+    sales_tax = db.Column(db.Numeric(18,2))
     comments = db.Column(db.Text)
 
 class ShipmentHeader(db.Model):
