@@ -1,5 +1,4 @@
 from main import db
-from models import ShipmentHeader, ShipmentDetail, Payment
 
 def init_db():
     db.create_all()

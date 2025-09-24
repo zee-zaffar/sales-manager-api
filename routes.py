@@ -1,12 +1,28 @@
-from models import Products
-import psycopg2
-from main import app, db
+from main import app
 from flask import request, jsonify
-from models import ShipmentHeader, ShipmentDetail, Payment
-from datetime import datetime
-from db_connection import create_connection
 from products import get_all_products, add_new_product
 from shipments import get_all_shipments_header, get_all_payments, get_payments_by_shipment_header_id, get_shipment_by_header_id, add_shipment_header, add_new_shipment_detail, get_shipment_details, add_new_payment
+from orders import get_orders, insert_order, get_order_by_no, update_order
+
+# Route to get all orders
+@app.route('/orders', methods=['GET'])
+def orders_list():
+    return get_orders()
+
+# Route to get an order by order_no
+@app.route('/orders/<order_no>', methods=['GET'])
+def order_get(order_no):
+    return get_order_by_no(order_no)
+
+# Route to update an order via PUT
+@app.route('/orders/<order_no>', methods=['PUT'])
+def order_update(order_no):
+    return update_order(order_no)
+
+# Route to insert a new order
+@app.route('/orders', methods=['POST'])
+def orders_insert():
+    return insert_order()
 
 @app.route('/shipments', methods=['GET'])
 def get_shipments():

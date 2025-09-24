@@ -1,70 +1,77 @@
+from flask import request, jsonify
+from models import Orders
+from main import db
 
-import psycopg2
-from datetime import date, datetime
-from decimal import Decimal
-
+# Get all orders
 def get_orders():
-    orders_list = []
-    try:
-        connection = create_session()
-        cursor = connection.cursor()
+    orders = Orders.query.all()
+    return jsonify([
+        {
+            'order_no': o.order_no,
+            'order_date': o.order_date.isoformat() if o.order_date else None,
+            'qty': o.qty,
+            'source': o.source,
+            'color': o.color,
+            'source': o.source,
+            'platform': o.platform,
+            'order_amount': float(o.order_amount) if o.order_amount else None,
+            'sales_tax': float(o.sales_tax) if o.sales_tax else None,
+            'comments': o.comments
+        } for o in orders
+    ])
 
-        #Query to get orders
-        cursor.execute("SELECT * FROM danfay.public.orders")
-        orders = cursor.fetchall()
-        if not orders:
-            print("No orders found.")
-            return []
-        
-        for ord in orders:
-           orders_list.append({"orderno": ord[0], "orderdate": ord[1]})
+# Insert a new order
+def insert_order():
+    data = request.json
+    order = Orders(
+        order_no=data.get('order_no'),
+        order_date=data.get('order_date'),
+        qty=data.get('qty'),
+        color=data.get('color'),
+        source=data.get('source'),
+        platform=data.get('platform'),
+        order_amount=data.get('order_amount'),
+        sales_tax=data.get('sales_tax'),
+        comments=data.get('comments')
+    )
+    db.session.add(order)
+    db.session.commit()
+    return jsonify({'order_no': order.order_no}), 201
 
-    except psycopg2.Error as db_error:
-        print(f"Database Error: {db_error}")
-        orders_list = []
+# Query an order by order_no
+def get_order_by_no(order_no):
+    order = Orders.query.filter_by(order_no=order_no).first()
+    if not order:
+        return jsonify({'error': 'Order not found'}), 404
+    return jsonify({
+        'order_no': order.order_no,
+        'order_date': order.order_date.isoformat() if order.order_date else None,
+        'qty': order.qty,
+        'color': order.color,
+        'source': order.source,
+        'platform': order.platform,
+        'order_amount': float(order.order_amount) if order.order_amount else None,
+        'sales_tax': float(order.sales_tax) if order.sales_tax else None,
+        'comments': order.comments
+    })
 
-    except Exception as error:
-        print(f"General Exception Error:{error}")
+# Update an order via PUT
+def update_order(order_no):
+    order = Orders.query.filter_by(order_no=order_no).first()
+    if not order:
+        return jsonify({'error': 'Order not found'}), 404
+    data = request.json
+    order.order_date = data.get('order_date', order.order_date)
+    order.qty = data.get('qty', order.qty)
+    order.color = data.get('color', order.color)
+    order.source = data.get('source', order.source)
+    order.platform = data.get('platform', order.platform)
+    order.order_amount = data.get('order_amount', order.order_amount)
+    order.sales_tax = data.get('sales_tax', order.sales_tax)
+    order.comments = data.get('comments', order.comments)
+    db.session.commit()
+    return jsonify({'order_no': order.order_no, 'message': 'Order updated successfully'})
 
-    finally:
-        if cursor:
-            cursor.close()
-        if connection:
-            connection.close()
 
-    print(f"order No:{orders_list[0]['orderno']}")
-    return orders_list
 
-def insert_order(orderNo: str, orderDate: datetime, qty: int, platform: str, orderAmount: Decimal, salesTax: Decimal, itemCost:Decimal, comments: str, status:str ) -> bool:
-    try:
-        connection = create_session()
-        cursor = connection.cursor()
-
-        # Insert order
-        cursor.execute(
-            "INSERT INTO danfay.public.orders (orderno, orderdate, qty, platform, orderamount, salestax, itemcost, comments, status )" 
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);",
-            (orderNo, orderDate, qty, platform, orderAmount, salesTax, itemCost, comments, status)
-        )
-        connection.commit()
-        return True
-
-    except psycopg2.Error as db_error:
-        print(f"Database Error: {db_error}")
-        return False
-
-    except Exception as error:
-        print(f"General Exception Error:{error}")
-        return False
-
-    finally:
-        if cursor:
-            cursor.close()
-        if connection:
-            connection.close()
-
-if __name__ == "__main__":
-   print(get_orders())
-
-#    insert_order("123456", date.fromisoformat("2025-09-10"), 1, "Etsy", 59.95, 2.25, 20.16, "add test", "completed")
 
