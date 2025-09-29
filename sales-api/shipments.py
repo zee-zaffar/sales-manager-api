@@ -1,5 +1,5 @@
 from flask import jsonify
-from models import ShipmentHeader, ShipmentDetail, Payment
+from db_models import ShipmentHeader, ShipmentDetail, Payment
 from main import db
 
 def get_all_shipments_header():
@@ -7,9 +7,9 @@ def get_all_shipments_header():
     return jsonify([
         {
             'id': p.id,
-            'shipmentno': p.shipmentno,
-            'suppliername': p.suppliername,
-            'datereceived': p.datereceived.isoformat(),
+            'shipment_no': p.shipment_no,
+            'supplie_rname': p.supplier_name,
+            'date_received': p.date_received.isoformat(),
             'comments': p.comments
         } for p in shipment_header
     ])
@@ -18,33 +18,33 @@ def get_shipment_by_header_id(shipment_header_id):
     s = ShipmentHeader.query.get_or_404(shipment_header_id)
     return jsonify({
         'id': s.id,
-        'suppliername': s.suppliername,
-        'shipmentno': s.shipmentno,
-        'datereceived': s.datereceived.isoformat(),
+        'supplier_name': s.supplier_name,
+        'shipment_no': s.shipment_no,
+        'date_received': s.date_received.isoformat(),
         'comments': s.comments
     })
 
 #Get shipment details by header id
 def get_shipment_details(shipment_header_id):
-    details = ShipmentDetail.query.filter_by(shipmentheaderid=shipment_header_id).all()
+    details = ShipmentDetail.query.filter_by(shipment_header_id=shipment_header_id).all()
     return jsonify([
         {
             'id': d.id,
-            'shipmentheaderid': d.shipmentheaderid,
+            'shipment_header_id': d.shipment_header_id,
             'description': d.description,
             'sku': d.sku,
             'quantity': d.quantity,
-            'unitprice': float(d.unitprice),
+            'unit_price': float(d.unit_price),
             'comments': d.comments
         } for d in details
     ])
 
 def add_shipment_header(data:any)->int:
     shipment = ShipmentHeader(
-        suppliername=data.get('SupplierName'),
-        shipmentno=data.get('ShipmentNo'),
-        datereceived=data.get('DateReceived'),
-        comments=data.get('Comments')
+        suppliername=data.get('supplier_name'),
+        shipmentno=data.get('shipment_no'),
+        datereceived=data.get('date_received'),
+        comments=data.get('comments')
     )
     db.session.add(shipment)
     db.session.commit()
@@ -56,12 +56,12 @@ def add_new_shipment_detail(shipment_header_id, detail):
     Returns a list of inserted detail IDs.
     """
     add_shipment_details = ShipmentDetail(
-        shipmentheaderid=shipment_header_id,
-        description=detail.get('Description'),
-        sku=detail.get('SKU'),
-        quantity=detail.get('Quantity'),
-        unitprice=detail.get('UnitPrice'),
-        comments=detail.get('Comments')
+        shipment_header_id=shipment_header_id,
+        description=detail.get('description'),
+        sku=detail.get('sku'),
+        quantity=detail.get('quantity'),
+        unit_price=detail.get('unit_price'),
+        comments=detail.get('comments')
     )
 
     db.session.add(add_shipment_details)      
@@ -74,8 +74,8 @@ def get_all_payments():
     return jsonify([
         {
             'id': p.id,
-            'shipmentheaderid': p.shipmentheaderid,
-            'paymentdate': p.paymentdate.isoformat(),
+            'shipment_header_id': p.shipment_header_id,
+            'payment_date': p.payment_date.isoformat(),
             'description': p.description,
             'amount': float(p.amount),
             'fee': float(p.fee),
@@ -84,12 +84,12 @@ def get_all_payments():
     ])
 
 def get_payments_by_shipment_header_id(shipment_header_id):
-    payments = Payment.query.filter_by(shipmentheaderid=shipment_header_id).all()
+    payments = Payment.query.filter_by(shipment_header_id=shipment_header_id).all()
     return jsonify([
         {
             'id': p.id,
-            'shipmentheaderid': p.shipmentheaderid,
-            'paymentdate': p.paymentdate.isoformat() if p.paymentdate else None,
+            'shipment_header_id': p.shipment_header_id,
+            'payment_date': p.payment_date.isoformat() if p.payment_date else None,
             'description': p.description,
             'amount': float(p.amount) if p.amount is not None else None,
             'fee': float(p.fee) if p.fee is not None else None,
@@ -100,11 +100,15 @@ def get_payments_by_shipment_header_id(shipment_header_id):
 
 def add_new_payment(shipment_header_id,data)->int:
     payment = Payment(
-        shipmentheaderid=shipment_header_id,
-        paymentdate=data['PaymentDate'],
-        description=data['Description'],
-        amount=data['Amount'],
-        fee=data['Fee'],
-        comments=data.get('Comments')
+        shipment_header_id=shipment_header_id,
+        payment_date=data['payment_date'],
+        description=data['description'],
+        amount=data['amount'],
+        fee=data['fee'],
+        comments=data.get('comments')
     )
+
+    db.session.add(payment)      
+    db.session.commit()
+
     return jsonify(payment.id)

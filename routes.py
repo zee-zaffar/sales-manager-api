@@ -3,11 +3,19 @@ from flask import request, jsonify
 from products import get_all_products, add_new_product
 from shipments import get_all_shipments_header, get_all_payments, get_payments_by_shipment_header_id, get_shipment_by_header_id, add_shipment_header, add_new_shipment_detail, get_shipment_details, add_new_payment
 from orders import get_orders, insert_order, get_order_by_no, update_order
+from etsy import get_receipt
+from api_models import Receipt
 
 # Route to get all orders
 @app.route('/orders', methods=['GET'])
 def orders_list():
     return get_orders()
+
+# Route to get all orders
+@app.route('/etsy/receipts/<int:receipt_id>', methods=['GET'])
+def get_etsy_receipt(receipt_id):
+    etsy_receipt =  get_receipt(receipt_id)
+    return etsy_receipt
 
 # Route to get an order by order_no
 @app.route('/orders/<order_no>', methods=['GET'])
@@ -57,7 +65,7 @@ def add_shipment_detail(shipment_header_id: int):
     return add_new_shipment_detail(shipment_header_id, shipment_detail)
 
 # Add new payment
-@app.route('/payments', methods=['POST'])
+@app.route('/shipments/<int:shipment_header_id>/payments', methods=['POST'])
 def add_payment(shipment_header_id: int):
     payment = request.json
     payment_id = add_new_payment(shipment_header_id, payment)
