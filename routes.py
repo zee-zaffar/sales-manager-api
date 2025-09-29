@@ -65,7 +65,7 @@ def add_shipment_detail(shipment_header_id: int):
     return add_new_shipment_detail(shipment_header_id, shipment_detail)
 
 # Add new payment
-@app.route('/payments', methods=['POST'])
+@app.route('/shipments/<int:shipment_header_id>/payments', methods=['POST'])
 def add_payment(shipment_header_id: int):
     payment = request.json
     payment_id = add_new_payment(shipment_header_id, payment)

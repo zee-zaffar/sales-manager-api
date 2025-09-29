@@ -13,30 +13,30 @@ class Orders(db.Model):
     comments = db.Column(db.Text)
 
 class ShipmentHeader(db.Model):
-    __tablename__ = 'shipmentheader'
+    __tablename__ = 'shipment_header'
     id = db.Column(db.Integer, primary_key=True)
-    suppliername = db.Column(db.String(255), nullable=False)
-    shipmentno = db.Column(db.String(100), nullable=False)
-    datereceived = db.Column(db.Date, nullable=False)
+    supplier_name = db.Column(db.String(255), nullable=False)
+    shipment_no = db.Column(db.String(100), nullable=False)
+    date_received = db.Column(db.Date, nullable=False)
     comments = db.Column(db.Text)
     details = db.relationship('ShipmentDetail', backref='header', cascade="all, delete-orphan")
     payments = db.relationship('Payment', backref='header', cascade="all, delete-orphan")
 
 class ShipmentDetail(db.Model):
-    __tablename__ = 'shipmentdetail'
+    __tablename__ = 'shipment_detail'
     id = db.Column(db.Integer, primary_key=True)
-    shipmentheaderid = db.Column(db.Integer, db.ForeignKey('shipmentheader.id'), nullable=False)
+    shipment_header_id = db.Column(db.Integer, db.ForeignKey('shipment_header.id'), nullable=False)
     description = db.Column(db.Text)
     sku = db.Column(db.String(100))
     quantity = db.Column(db.Integer)
-    unitprice = db.Column(db.Numeric(18,2))
+    unit_price = db.Column(db.Numeric(18,2))
     comments = db.Column(db.Text)
 
 class Payment(db.Model):
     __tablename__ = 'payments'
     id = db.Column(db.Integer, primary_key=True)
-    shipmentheaderid = db.Column(db.Integer, db.ForeignKey('shipmentheader.id'), nullable=False)
-    paymentdate = db.Column(db.Date, nullable=False)
+    shipment_header_id = db.Column(db.Integer, db.ForeignKey('shipment_header.id'), nullable=False)
+    payment_date = db.Column(db.Date, nullable=False)
     description = db.Column(db.String(100), nullable=False)
     amount = db.Column(db.Numeric(18,2), nullable=False)
     fee = db.Column(db.Numeric(18,2), nullable=False)
@@ -44,9 +44,9 @@ class Payment(db.Model):
 
 class Products(db.Model):
     __tablename__ = 'products'
-    productcode = db.Column(db.String, primary_key=True)
-    productcategory = db.Column(db.String, nullable=False)
-    productdesc = db.Column(db.String, nullable=False)
+    code = db.Column(db.String, primary_key=True)
+    category = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
     color = db.Column(db.String(100), nullable=False)
-    productcost = db.Column(db.Numeric(18,2), nullable=False)
+    cost = db.Column(db.Numeric(18,2), nullable=False)
     comments = db.Column(db.Text)
