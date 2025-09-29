@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from models import Orders
+from db_models import Orders
 from main import db
 
 # Get all orders

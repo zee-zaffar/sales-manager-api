@@ -1,5 +1,5 @@
 from flask import jsonify
-from models import ShipmentHeader, ShipmentDetail, Payment
+from db_models import ShipmentHeader, ShipmentDetail, Payment
 from main import db
 
 def get_all_shipments_header():

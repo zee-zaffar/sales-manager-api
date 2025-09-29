@@ -1,5 +1,5 @@
 from flask import jsonify
-from models import Products
+from db_models import Products
 from main import db
 from typing import Any
 
