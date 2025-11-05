@@ -15,7 +15,7 @@ def orders_list():
 @app.route('/etsy/receipts/<int:receipt_id>', methods=['GET'])
 def get_etsy_receipt(receipt_id):
     etsy_receipt =  get_receipt(receipt_id)
-    return etsy_receipt
+    return jsonify(etsy_receipt), 200
 
 # Route to get an order by order_no
 @app.route('/orders/<order_no>', methods=['GET'])

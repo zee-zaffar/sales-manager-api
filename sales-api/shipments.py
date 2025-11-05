@@ -8,7 +8,7 @@ def get_all_shipments_header():
         {
             'id': p.id,
             'shipment_no': p.shipment_no,
-            'supplie_rname': p.supplier_name,
+            'supplier_name': p.supplier_name,
             'date_received': p.date_received.isoformat(),
             'comments': p.comments
         } for p in shipment_header
