@@ -4,6 +4,10 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+# Configure JSON formatting for better readability
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.json.sort_keys = False
+
 db = SQLAlchemy(app)
 
 from routes import *

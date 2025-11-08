@@ -1,7 +1,7 @@
 from main import app
 from flask import request, jsonify
 from products import get_all_products, add_new_product
-from shipments import get_all_shipments_header, get_all_payments, get_payments_by_shipment_header_id, get_shipment_by_header_id, add_shipment_header, add_new_shipment_detail, get_shipment_details, add_new_payment
+from shipments import get_all_shipments_header, get_all_payments, get_payments_by_shipment_header_id, get_shipment_by_header_id, add_shipment_header, add_new_shipment_detail, get_shipment_details, add_new_payment, edit_shipment_detail, edit_payment
 from orders import get_orders, insert_order, get_order_by_no, update_order
 from etsy import get_receipt
 from api_models import Receipt
@@ -15,7 +15,7 @@ def orders_list():
 @app.route('/etsy/receipts/<int:receipt_id>', methods=['GET'])
 def get_etsy_receipt(receipt_id):
     etsy_receipt =  get_receipt(receipt_id)
-    return etsy_receipt
+    return jsonify(etsy_receipt), 200
 
 # Route to get an order by order_no
 @app.route('/orders/<order_no>', methods=['GET'])
@@ -62,7 +62,18 @@ def shipment_details(shipment_header_id:int):
 @app.route('/shipments/<int:shipment_header_id>/details', methods=['POST'])
 def add_shipment_detail(shipment_header_id: int):
     shipment_detail = request.json
-    return add_new_shipment_detail(shipment_header_id, shipment_detail)
+    return add_new_shipment_detail( shipment_detail)
+
+# Update shipment detail
+@app.route('/shipments/<int:header_id>/details/<int:detail_id>', methods=['PUT'])
+def update_shipment_detail(header_id: int, detail_id: int):
+
+    # Get the update data from request
+    update_data = request.json
+
+    result, status_code = edit_shipment_detail(detail_id, update_data)
+
+    return jsonify(result), status_code
 
 # Add new payment
 @app.route('/shipments/<int:shipment_header_id>/payments', methods=['POST'])
@@ -70,6 +81,27 @@ def add_payment(shipment_header_id: int):
     payment = request.json
     payment_id = add_new_payment(shipment_header_id, payment)
     return jsonify({'id': payment_id}), 201
+
+# Update payment
+@app.route('/shipments/<int:header_id>/payments/<int:payment_id>', methods=['PUT'])
+def update_payment_route(header_id: int, payment_id: int):
+    """
+    Update a payment for a specific shipment.
+    
+    Args:
+        shipment_id (int): The ID of the shipment header
+        payment_id (int): The ID of the payment to update
+        
+    Returns:
+        JSON: Updated payment data or error message with appropriate HTTP status code
+    """
+    # Get the update data from request
+    update_data = request.json
+    
+    # Call the update function
+    result, status_code = edit_payment(payment_id, update_data)
+        
+    return jsonify(result), status_code
 
 #Get all payments
 @app.route('/payments', methods=['GET'])
