@@ -5,6 +5,7 @@ from shipments import get_all_shipments_header, get_all_payments, get_payments_b
 from orders import get_orders, insert_order, get_order_by_no, update_order
 from etsy import get_receipt
 from api_models import Receipt
+from suppliers import get_all_suppliers, add_new_supplier, update_supplier
 
 # Route to get all orders
 @app.route('/orders', methods=['GET'])
@@ -62,7 +63,7 @@ def shipment_details(shipment_header_id:int):
 @app.route('/shipments/<int:shipment_header_id>/details', methods=['POST'])
 def add_shipment_detail(shipment_header_id: int):
     shipment_detail = request.json
-    return add_new_shipment_detail( shipment_detail)
+    return add_new_shipment_detail(shipment_header_id, shipment_detail)
 
 # Update shipment detail
 @app.route('/shipments/<int:header_id>/details/<int:detail_id>', methods=['PUT'])
@@ -124,5 +125,16 @@ def add_product():
     print("Received data for new product:", data)
     product_code =  add_new_product(data)
     return jsonify({'product_code': product_code}), 201
-    
 
+# Supplier routes
+@app.route('/suppliers', methods=['GET'])
+def suppliers_list():
+    return get_all_suppliers()
+
+@app.route('/suppliers', methods=['POST'])
+def suppliers_add():
+    return add_new_supplier()
+
+@app.route('/suppliers/<int:supplier_id>', methods=['PUT'])
+def supplier_update(supplier_id):
+    return update_supplier(supplier_id)

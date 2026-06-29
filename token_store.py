@@ -11,7 +11,7 @@ def save_tokens(access_token, refresh_token, filename="tokens.json"):
         json.dump(tokens, f)
 
 def load_tokens(filename="tokens.json"):
-    with open('sales-api/tokens.json', 'r') as f:
+    with open(filename, 'r') as f:
         tokens = json.load(f)
         return tokens.get("access_token"), tokens.get("refresh_token")
 

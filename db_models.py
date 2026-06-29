@@ -50,3 +50,13 @@ class Products(db.Model):
     color = db.Column(db.String(100), nullable=False)
     cost = db.Column(db.Numeric(18,2), nullable=False)
     comments = db.Column(db.Text)
+
+class Supplier(db.Model):
+    __tablename__ = 'suppliers'
+    id           = db.Column(db.Integer, primary_key=True)
+    name         = db.Column(db.String(255), nullable=False)
+    contact_name = db.Column(db.String(255))
+    email        = db.Column(db.String(255))
+    phone        = db.Column(db.String(50))
+    address      = db.Column(db.Text)
+    comments     = db.Column(db.Text)

@@ -45,14 +45,14 @@ def get_shipment_details(shipment_header_id):
 
 def add_shipment_header(data:any)->int:
     shipment = ShipmentHeader(
-        suppliername=data.get('supplier_name'),
-        shipmentno=data.get('shipment_no'),
-        datereceived=data.get('date_received'),
+        supplier_name=data.get('supplier_name'),
+        shipment_no=data.get('shipment_no'),
+        date_received=data.get('date_received'),
         comments=data.get('comments')
     )
     db.session.add(shipment)
     db.session.commit()
-    return jsonify(shipment.id)
+    return shipment.id
 
 def add_new_shipment_detail(shipment_header_id, detail):
     """
