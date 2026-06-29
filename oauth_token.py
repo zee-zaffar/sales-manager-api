@@ -11,7 +11,7 @@ def get_token_from_refresh(refresh_token: str)-> TokenResponse | dict:
    
     data = {
         "grant_type": "refresh_token",
-        "client_id": "dxe8mdgsficst03cqeqzp6bf",
+        "client_id": os.getenv("ETSY_CLIENT_ID", ""),
         "refresh_token": f"{refresh_token}"
     }
 

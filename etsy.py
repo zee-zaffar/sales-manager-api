@@ -1,4 +1,4 @@
-
+import os
 from typing import Any, Dict, Optional
 from api_models import Receipt, Total
 from token_store import load_tokens
@@ -6,7 +6,8 @@ from oauth_token import get_token_from_refresh
 import requests
 
 BASE_URL = "https://openapi.etsy.com/v3/application"
-CLIENT_ID = "dxe8mdgsficst03cqeqzp6bf"
+CLIENT_ID = os.getenv("ETSY_CLIENT_ID", "")
+SHOP_ID = os.getenv("ETSY_SHOP_ID", "")
 
 def get_receipt(receipt_id: int, timeout: int = 10)-> Receipt:
     """
@@ -32,7 +33,7 @@ def get_receipt(receipt_id: int, timeout: int = 10)-> Receipt:
     token = get_token_from_refresh(refresh_token)
     access_token = token.access_token
 
-    url = f"{BASE_URL}/shops/38164727/receipts/{receipt_id}"
+    url = f"{BASE_URL}/shops/{SHOP_ID}/receipts/{receipt_id}"
     print(f"Fetching receipt from URL: {url}")
     headers = {
         "Authorization": f"Bearer {access_token}",
