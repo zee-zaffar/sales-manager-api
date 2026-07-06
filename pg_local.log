@@ -257,3 +257,34 @@
 2026-07-01 17:22:35.306 CDT [35620] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
 2026-07-01 17:22:35.307 CDT [35620] LOG:  terminating any other active server processes
 2026-07-01 17:22:35.482 CDT [35620] LOG:  all server processes terminated; reinitializing
+2026-07-06 10:15:21.659 CDT [29544] LOG:  starting PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35227, 64-bit
+2026-07-06 10:15:21.671 CDT [29544] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-07-06 10:15:21.671 CDT [29544] LOG:  listening on IPv6 address "::1", port 5433
+2026-07-06 10:15:22.978 CDT [27492] LOG:  database system was interrupted; last known up at 2026-06-30 13:52:28 CDT
+2026-07-06 10:15:23.261 CDT [27492] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-07-06 10:15:23.270 CDT [27492] LOG:  redo starts at 0/1D69760
+2026-07-06 10:15:23.270 CDT [27492] LOG:  invalid record length at 0/1D69868: expected at least 24, got 0
+2026-07-06 10:15:23.270 CDT [27492] LOG:  redo done at 0/1D69830 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-07-06 10:15:23.275 CDT [11460] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-07-06 10:15:23.288 CDT [11460] LOG:  checkpoint complete: wrote 0 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.002 s, total=0.014 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/1D69868, redo lsn=0/1D69868
+2026-07-06 10:15:23.299 CDT [29544] LOG:  database system is ready to accept connections
+2026-07-06 10:15:44.249 CDT [9848] ERROR:  relation "shipment_detail" does not exist at character 15
+2026-07-06 10:15:44.249 CDT [9848] STATEMENT:  SELECT * FROM shipment_detail ORDER BY shipment_header_id, id
+2026-07-06 10:20:23.302 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 10:20:24.001 CDT [11460] LOG:  checkpoint complete: wrote 6 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.664 s, sync=0.017 s, total=0.700 s; sync files=4, longest=0.011 s, average=0.005 s; distance=42 kB, estimate=42 kB; lsn=0/1D742A8, redo lsn=0/1D74250
+2026-07-06 10:24:15.568 CDT [37728] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:24:16.049 CDT [1500] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:25:08.380 CDT [26456] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:25:08.717 CDT [38084] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:25:10.784 CDT [36388] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:25:11.144 CDT [10588] FATAL:  database "saleas_manager" does not exist
+2026-07-06 10:25:23.016 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 10:25:24.923 CDT [11460] LOG:  checkpoint complete: wrote 17 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.859 s, sync=0.020 s, total=1.907 s; sync files=16, longest=0.003 s, average=0.002 s; distance=91 kB, estimate=91 kB; lsn=0/1D8F268, redo lsn=0/1D8AF08
+2026-07-06 10:30:23.941 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 10:30:25.832 CDT [11460] LOG:  checkpoint complete: wrote 17 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.867 s, sync=0.016 s, total=1.892 s; sync files=17, longest=0.003 s, average=0.001 s; distance=27 kB, estimate=84 kB; lsn=0/1D91D00, redo lsn=0/1D91CA8
+2026-07-06 10:39:31.230 CDT [15820] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 10:40:23.850 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 10:40:28.650 CDT [11460] LOG:  checkpoint complete: wrote 43 buffers (0.3%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.744 s, sync=0.044 s, total=4.801 s; sync files=40, longest=0.011 s, average=0.002 s; distance=198 kB, estimate=198 kB; lsn=0/1DC3600, redo lsn=0/1DC35A8
+2026-07-06 10:43:44.115 CDT [10288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
