@@ -288,3 +288,69 @@
 2026-07-06 10:40:28.650 CDT [11460] LOG:  checkpoint complete: wrote 43 buffers (0.3%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.744 s, sync=0.044 s, total=4.801 s; sync files=40, longest=0.011 s, average=0.002 s; distance=198 kB, estimate=198 kB; lsn=0/1DC3600, redo lsn=0/1DC35A8
 2026-07-06 10:43:44.115 CDT [10288] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
 	
+2026-07-06 10:45:23.669 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 10:45:24.685 CDT [11460] LOG:  checkpoint complete: wrote 9 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.996 s, sync=0.010 s, total=1.016 s; sync files=9, longest=0.003 s, average=0.002 s; distance=11 kB, estimate=179 kB; lsn=0/1DC65E8, redo lsn=0/1DC6590
+2026-07-06 10:47:51.965 CDT [35788] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 11:00:23.707 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:00:24.152 CDT [11460] LOG:  checkpoint complete: wrote 4 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.431 s, sync=0.005 s, total=0.446 s; sync files=5, longest=0.002 s, average=0.001 s; distance=1 kB, estimate=161 kB; lsn=0/1DC6D70, redo lsn=0/1DC6D18
+2026-07-06 11:05:23.166 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:05:23.950 CDT [11460] LOG:  checkpoint complete: wrote 7 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.767 s, sync=0.008 s, total=0.785 s; sync files=8, longest=0.002 s, average=0.001 s; distance=4 kB, estimate=146 kB; lsn=0/1DC7E78, redo lsn=0/1DC7E20
+2026-07-06 11:10:23.952 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:10:24.748 CDT [11460] LOG:  checkpoint complete: wrote 7 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.776 s, sync=0.007 s, total=0.797 s; sync files=8, longest=0.002 s, average=0.001 s; distance=5 kB, estimate=132 kB; lsn=0/1DC9428, redo lsn=0/1DC93D0
+2026-07-06 11:15:23.757 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:15:24.334 CDT [11460] LOG:  checkpoint complete: wrote 5 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.550 s, sync=0.012 s, total=0.577 s; sync files=6, longest=0.004 s, average=0.002 s; distance=4 kB, estimate=119 kB; lsn=0/1DCA4D0, redo lsn=0/1DCA478
+2026-07-06 11:22:12.075 CDT [33420] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 11:25:23.362 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:25:23.474 CDT [11460] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.102 s, sync=0.002 s, total=0.112 s; sync files=2, longest=0.002 s, average=0.001 s; distance=1 kB, estimate=107 kB; lsn=0/1DCA968, redo lsn=0/1DCA910
+2026-07-06 11:28:15.625 CDT [21560] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 11:30:23.485 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:30:25.496 CDT [11460] LOG:  checkpoint complete: wrote 18 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.987 s, sync=0.012 s, total=2.012 s; sync files=18, longest=0.002 s, average=0.001 s; distance=90 kB, estimate=105 kB; lsn=0/1DE1480, redo lsn=0/1DE1428
+2026-07-06 11:35:23.505 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:35:23.842 CDT [11460] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.323 s, sync=0.005 s, total=0.338 s; sync files=4, longest=0.002 s, average=0.002 s; distance=1 kB, estimate=95 kB; lsn=0/1DE1B98, redo lsn=0/1DE1B40
+2026-07-06 11:39:15.872 CDT [6612] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 11:50:23.851 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:50:26.187 CDT [11460] LOG:  checkpoint complete: wrote 21 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=2.310 s, sync=0.015 s, total=2.337 s; sync files=17, longest=0.004 s, average=0.001 s; distance=113 kB, estimate=113 kB; lsn=0/1DFFE38, redo lsn=0/1DFE120
+2026-07-06 11:50:31.953 CDT [11828] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 11:55:23.199 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 11:55:24.532 CDT [11460] LOG:  checkpoint complete: wrote 12 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.311 s, sync=0.011 s, total=1.333 s; sync files=11, longest=0.003 s, average=0.001 s; distance=52 kB, estimate=107 kB; lsn=0/1E0B318, redo lsn=0/1E0B2C0
+2026-07-06 12:00:23.537 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 12:00:23.763 CDT [11460] LOG:  checkpoint complete: wrote 2 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.215 s, sync=0.003 s, total=0.226 s; sync files=3, longest=0.002 s, average=0.001 s; distance=2 kB, estimate=96 kB; lsn=0/1E0BE90, redo lsn=0/1E0BE38
+2026-07-06 12:05:45.099 CDT [1632] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 12:10:23.774 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 12:10:25.659 CDT [11460] LOG:  checkpoint complete: wrote 17 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.850 s, sync=0.024 s, total=1.886 s; sync files=17, longest=0.010 s, average=0.002 s; distance=88 kB, estimate=96 kB; lsn=0/1E21EB8, redo lsn=0/1E21E60
+2026-07-06 12:11:18.507 CDT [19120] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 12:15:23.660 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 12:15:24.219 CDT [11460] LOG:  checkpoint complete: wrote 5 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.546 s, sync=0.005 s, total=0.559 s; sync files=6, longest=0.002 s, average=0.001 s; distance=5 kB, estimate=86 kB; lsn=0/1E235C8, redo lsn=0/1E23570
+2026-07-06 12:17:36.735 CDT [34892] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 12:20:23.223 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 12:20:23.688 CDT [11460] LOG:  checkpoint complete: wrote 4 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.437 s, sync=0.013 s, total=0.465 s; sync files=5, longest=0.010 s, average=0.003 s; distance=4 kB, estimate=78 kB; lsn=0/1E24878, redo lsn=0/1E24820
+2026-07-06 13:15:31.568 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 13:15:32.032 CDT [11460] LOG:  checkpoint complete: wrote 4 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.446 s, sync=0.005 s, total=0.465 s; sync files=5, longest=0.002 s, average=0.001 s; distance=4 kB, estimate=71 kB; lsn=0/1E25C48, redo lsn=0/1E25BF0
+2026-07-06 13:31:08.398 CDT [4352] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 13:35:31.066 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 13:35:31.526 CDT [11460] LOG:  checkpoint complete: wrote 4 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.433 s, sync=0.006 s, total=0.461 s; sync files=5, longest=0.002 s, average=0.002 s; distance=20 kB, estimate=66 kB; lsn=0/1E2AE10, redo lsn=0/1E2ADB8
+2026-07-06 13:45:31.532 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 13:45:32.111 CDT [11460] LOG:  checkpoint complete: wrote 5 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.554 s, sync=0.013 s, total=0.580 s; sync files=6, longest=0.010 s, average=0.003 s; distance=11 kB, estimate=60 kB; lsn=0/1E2DD48, redo lsn=0/1E2DCF0
+2026-07-06 13:47:28.594 CDT [24292] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 13:50:31.123 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 13:50:31.484 CDT [11460] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.334 s, sync=0.012 s, total=0.362 s; sync files=4, longest=0.011 s, average=0.003 s; distance=5 kB, estimate=55 kB; lsn=0/1E2F188, redo lsn=0/1E2F130
+2026-07-06 13:55:31.487 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 13:55:31.711 CDT [11460] LOG:  checkpoint complete: wrote 2 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.215 s, sync=0.002 s, total=0.224 s; sync files=3, longest=0.001 s, average=0.001 s; distance=2 kB, estimate=49 kB; lsn=0/1E2FB40, redo lsn=0/1E2FAE8
+2026-07-06 13:55:54.442 CDT [13024] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-07-06 14:00:31.722 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 14:00:34.161 CDT [11460] LOG:  checkpoint complete: wrote 22 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=2.422 s, sync=0.011 s, total=2.440 s; sync files=22, longest=0.002 s, average=0.001 s; distance=75 kB, estimate=75 kB; lsn=0/1E42AB0, redo lsn=0/1E42A58
+2026-07-06 14:05:31.166 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 14:05:31.616 CDT [11460] LOG:  checkpoint complete: wrote 4 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.436 s, sync=0.004 s, total=0.451 s; sync files=5, longest=0.002 s, average=0.001 s; distance=5 kB, estimate=68 kB; lsn=0/1E44030, redo lsn=0/1E43FC0
+2026-07-06 14:10:31.626 CDT [11460] LOG:  checkpoint starting: time
+2026-07-06 14:10:31.757 CDT [11460] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.110 s, sync=0.003 s, total=0.131 s; sync files=2, longest=0.002 s, average=0.002 s; distance=3 kB, estimate=62 kB; lsn=0/1E44F80, redo lsn=0/1E44F28
